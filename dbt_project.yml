@@ -33,7 +33,7 @@ models:
         shared:
           +materialized: table
 
-        open_restaurant_apps:
+        open_restaurants_app:
           +materialized: table
 
         dot_311:
