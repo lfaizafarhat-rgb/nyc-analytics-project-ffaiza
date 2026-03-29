@@ -1,4 +1,5 @@
 version: 2
+
 sources:
   - name: raw
     description: Raw data loaded from NYC Open Data
@@ -10,7 +11,7 @@ sources:
           NYC 311 service requests for Dept of Transportation.
           One row per service request.
         columns:
-          - name: unique_keydo
+          - name: unique_key
             description: Unique ID for the service request
             tests:
               - unique
@@ -20,19 +21,19 @@ sources:
           - name: closed_date
             description: Date and time the request was closed
           - name: agency
-            description: Agency code
+            description: Agency code (e.g., DOT)
           - name: agency_name
             description: Full name of the agency
           - name: complaint_type
-            description: Type of complaint
+            description: Type of complaint (e.g., Pothole, Street Light Out)
           - name: descriptor
             description: Further description of the complaint
           - name: descriptor_2
             description: Additional description of the complaint
           - name: location_type
-            description: Location where the incident occurred
+            description: Type of location where the incident occurred
           - name: incident_zip
-            description: Zip code of the incident location
+            description: Incident location ZIP code
           - name: incident_address
             description: Street address of the incident
           - name: latitude
@@ -40,69 +41,30 @@ sources:
           - name: longitude
             description: Longitude coordinate
           - name: address_type
-            description: 'Type of address (e.g., ADDRESS, INTERSECTION, BLOCKFACE)'
+            description: Type of address (ADDRESS, INTERSECTION, etc.)
           - name: bbl
-            description: Borough Block and Lot number (NYC tax lot id)
+            description: Borough, Block, and Lot number
           - name: borough
-            description: NYC borough where incident occurred
-          - name: bridge_highway_direction
-            description: Direction on bridge or highway (e.g. Northbound)
-          - name: bridge_highway_name
-            description: Name of bridge or highway where incident occurred
-          - name: bridge_highway_segment
-            description: Specific segment of bridge or highway
+            description: NYC borough of the incident
           - name: city
-            description: City name where incident occurred
+            description: City name of the incident
           - name: community_board
             description: NYC Community Board district number
           - name: cross_street_1
-            description: First cross street near incident location
+            description: First cross street
           - name: cross_street_2
-            description: Second cross street near incident location
-          - name: due_date
-            description: Expected due date for request resolution
-          - name: facility_type
-            description: Type of facility where incident occurred
-          - name: intersection_street_1
-            description: First street forming intersection where incident occurred
-          - name: intersection_street_2
-            description: Second street forming intersection where incident occurred
-          - name: open_data_channel_type
-            description: How request was submitted (ONLINE, PHONE, MOBILE, etc.)
-          - name: park_borough
-            description: Borough of park where incident occurred
-          - name: park_facility_name
-            description: Name of park facility where incident occurred
-          - name: resolution_action_updated_date
-            description: Date when resolution action was last updated
-          - name: resolution_description
-            description: Description of how the request was resolved
-          - name: road_ramp
-            description: Road ramp identifier where incident occurred
+            description: Second cross street
           - name: status
-            description: Current status of request (Open, Closed, In Progress, etc.)
+            description: Current status of the request
           - name: street_name
-            description: Name of street where incident occurred
-          - name: x_coordinate_state_plane
-            description: X coordinate in NY State Plane projection system (NAD 83)
-          - name: y_coordinate_state_plane
-            description: Y coordinate in NY State Plane projection system (NAD 83)
+            description: Name of the street
           - name: landmark
             description: Nearby landmark or point of interest
 
       - name: source_nyc_open_restaurant_apps
         description: |
-          NYC Open Restaurant applications data (Historic).
+          NYC Open Restaurant applications data (Historic). 
           Contains applications from establishments seeking outdoor seating.
-        columns:
-          - version: 2
-
-sources:
-  - name: source_nyc_open_restaurant_apps
-    description: NYC Open Restaurant applications data (Historic). Contains applications from establishments seeking outdoor seating.
-    tables:
-      - name: open_restaurant_apps
-        description: Raw table of restaurant applications for outdoor seating
         columns:
           - name: objectid
             description: Unique object ID for the record
@@ -112,70 +74,68 @@ sources:
           - name: globalid
             description: Global unique identifier for the record
           - name: seating_interest_sidewalk
-            description: Sidewalk, Roadway, or Both
+            description: Interest in Sidewalk, Roadway, or Both
           - name: restaurant_name
             description: Name of the restaurant
           - name: legal_business_name
             description: Legal business name of the establishment
           - name: doing_business_as_dba
             description: DBA name (Doing Business As)
-          - name: bulding_number
-            description: Building number of restaurant address
+          - name: building_number
+            description: Building number of the restaurant address
           - name: street
-            description: Street name of restaurant location
+            description: Street name of the restaurant location
           - name: borough
-            description: NYC borough where the restaurant is located
+            description: NYC borough of the restaurant
           - name: zip
-            description: Postal ZIP code of restaurant location
+            description: Postal ZIP code
           - name: business_address
-            description: Full business address of the establishment
+            description: Full business address
           - name: food_service_establishment
             description: Food Service Establishment Permit number
           - name: sidewalk_dimensions_length
-            description: Length of the sidewalk seating area (in feet)
+            description: Length of the sidewalk seating area (ft)
           - name: sidewalk_dimensions_width
-            description: Width of the sidewalk seating area (in feet)
+            description: Width of the sidewalk seating area (ft)
           - name: sidewalk_dimensions_area
-            description: Total area of the sidewalk seating space (in square feet)
+            description: Total area of sidewalk seating (sq ft)
           - name: roadway_dimensions_length
-            description: Length of the roadway seating area (in feet)
+            description: Length of the roadway seating area (ft)
           - name: roadway_dimensions_width
-            description: Width of the roadway seating area (in feet)
+            description: Width of the roadway seating area (ft)
           - name: roadway_dimensions_area
-            description: Total area of the roadway seating space (in square feet)
+            description: Total area of roadway seating (sq ft)
           - name: approved_for_sidewalk_seating
-            description: Is the restaurant approved for sidewalk seating?
+            description: Flag for sidewalk seating approval
           - name: approved_for_roadway_seating
-            description: Is the restaurant approved for roadway seating?
+            description: Flag for roadway seating approval
           - name: qualify_alcohol
-            description: Does this restaurant qualify to serve alcohol
+            description: Does the restaurant qualify to serve alcohol
           - name: sla_serial_number
-            description: The unique identifying number issued by the SLA
-          - name: sla_licens_type
-            description: The category of the alcohol license issued to the restaurant
-          - name: time_of_submission
-            description: The date and time of the application submission
-          - name: latitude
-            description: Latitude coordinate of the restaurant location
-          - name: longitude
-            description: Longitude coordinate of the restaurant location
-          - name: bin
-            description: The BIN (Building Identification Number) is a unique identifier for each building in the City.
-          - name: bbl
-            description: The BBL (Borough, Block, Lot) is a unique identifier for each tax lot in the City.
-          - name: nta
-            description: The Neighborhood Tabulation Area
-          - name: landmark_district_or_building
-            description: Agreed to the terms and conditions of the Landmark district or building
-          - name: landmarkdistrict_terms
-            description: Is the restaurant in compliance with the DOHMH health code
-          - name: community_board
-            description: NYC community board number for the area
-          - name: census_tract
-            description: Census tract number of the restaurant location
-          - name: council_district
-            description: Dynamically added by Socrata Ingester
-          - name: healthcompliance_terms
-            description: Dynamically added by Socrata Ingester
+            description: Unique identifying number issued by the SLA
           - name: sla_license_type
-            description: Type of SLA license issued (corrected spelling)
+            description: Category of alcohol license issued
+          - name: time_of_submission
+            description: Date and time of application submission
+          - name: latitude
+            description: Latitude coordinate
+          - name: longitude
+            description: Longitude coordinate
+          - name: bin
+            description: Building Identification Number
+          - name: bbl
+            description: Borough, Block, Lot tax identifier
+          - name: nta
+            description: Neighborhood Tabulation Area
+          - name: landmark_district_or_building
+            description: Compliance with Landmark terms
+          - name: landmarkdistrict_terms
+            description: Agreement to Landmark district terms
+          - name: community_board
+            description: NYC community board number
+          - name: census_tract
+            description: Census tract number
+          - name: council_district
+            description: NYC Council District
+          - name: healthcompliance_terms
+            description: Compliance with DOHMH health code
