@@ -1,5 +1,4 @@
- -- Quick test to verify source connection works
- SELECT
+SELECT
      unique_key,
      created_date,
      complaint_type,
