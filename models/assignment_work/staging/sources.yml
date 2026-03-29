@@ -10,7 +10,7 @@ sources:
           NYC 311 service requests for Dept of Transportation.
           One row per service request.
         columns:
-          - name: unique_key
+          - name: unique_keydo
             description: Unique ID for the service request
             tests:
               - unique
@@ -89,3 +89,74 @@ sources:
             description: Y coordinate in NY State Plane projection system (NAD 83)
           - name: landmark
             description: Nearby landmark or point of interest
+
+name: source_nyc_open_restaurant_apps
+        description: |
+          NYC Open Restaurant applications data (Historic).
+          Contains applications from establishments seeking outdoor seating.
+        columns:
+          - name: objectid
+            description: Unique identifier for the application
+            tests:
+              - unique
+              - not_null
+          - name: globalid
+            description: Global unique identifier
+          - name: seating_interest_sidewalk
+            description: Indicator for sidewalk seating interest
+          - name: seating_interest_roadway
+            description: Indicator for roadway seating interest
+          - name: restaurant_name
+            description: Name of the restaurant
+          - name: legal_business_name
+            description: Legal name of the business
+          - name: doing_business_as_dba
+            description: DBA name of the restaurant
+          - name: business_address
+            description: Physical address of the business
+          - name: borough
+            description: Borough where the restaurant is located
+          - name: postcode
+            description: Zip code of the business
+          - name: latitude
+            description: Latitude coordinate
+          - name: longitude
+            description: Longitude coordinate
+          - name: community_board
+            description: Community board district
+          - name: council_district
+            description: City council district
+          - name: census_tract
+            description: Census tract number
+          - name: bbl
+            description: Borough, Block, and Lot number
+          - name: bin
+            description: Building Identification Number
+          - name: food_service_establishment_fse
+            description: Food service establishment permit number
+          - name: permit_number
+            description: Outdoor seating permit number
+          - name: sidewalk_area_sq_ft
+            description: Total square footage for sidewalk seating
+          - name: roadway_area_sq_ft
+            description: Total square footage for roadway seating
+          - name: approved_for_sidewalk_seating
+            description: Approval status for sidewalk
+          - name: approved_for_roadway_seating
+            description: Approval status for roadway
+          - name: qualifying_alcohol_beverage_lic
+            description: Indicator for alcohol license
+          - name: sla_serial_number
+            description: State Liquor Authority serial number
+          - name: sla_license_type
+            description: Type of SLA license
+          - name: landmark_district_or_individual
+            description: Indicator if located in a landmarked area
+          - name: landmark_confimation_method
+            description: Method used to confirm landmark status
+          - name: health_compliance_confirmation
+            description: Confirmation of health code compliance
+          - name: type_of_establishment
+            description: Category of the food establishment
+          - name: submission_date
+            description: Date the application was submitted
