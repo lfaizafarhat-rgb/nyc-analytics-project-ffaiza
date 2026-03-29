@@ -95,68 +95,87 @@ sources:
           NYC Open Restaurant applications data (Historic).
           Contains applications from establishments seeking outdoor seating.
         columns:
+          - version: 2
+
+sources:
+  - name: source_nyc_open_restaurant_apps
+    description: NYC Open Restaurant applications data (Historic). Contains applications from establishments seeking outdoor seating.
+    tables:
+      - name: open_restaurant_apps
+        description: Raw table of restaurant applications for outdoor seating
+        columns:
           - name: objectid
-            description: Unique identifier for the application
+            description: Unique object ID for the record
             tests:
               - unique
               - not_null
           - name: globalid
-            description: Global unique identifier
+            description: Global unique identifier for the record
           - name: seating_interest_sidewalk
-            description: Indicator for sidewalk seating interest
-          - name: seating_interest_roadway
-            description: Indicator for roadway seating interest
+            description: Sidewalk, Roadway, or Both
           - name: restaurant_name
             description: Name of the restaurant
           - name: legal_business_name
-            description: Legal name of the business
+            description: Legal business name of the establishment
           - name: doing_business_as_dba
-            description: DBA name of the restaurant
-          - name: business_address
-            description: Physical address of the business
+            description: DBA name (Doing Business As)
+          - name: bulding_number
+            description: Building number of restaurant address
+          - name: street
+            description: Street name of restaurant location
           - name: borough
-            description: Borough where the restaurant is located
-          - name: postcode
-            description: Zip code of the business
-          - name: latitude
-            description: Latitude coordinate
-          - name: longitude
-            description: Longitude coordinate
-          - name: community_board
-            description: Community board district
-          - name: council_district
-            description: City council district
-          - name: census_tract
-            description: Census tract number
-          - name: bbl
-            description: Borough, Block, and Lot number
-          - name: bin
-            description: Building Identification Number
-          - name: food_service_establishment_fse
-            description: Food service establishment permit number
-          - name: permit_number
-            description: Outdoor seating permit number
-          - name: sidewalk_area_sq_ft
-            description: Total square footage for sidewalk seating
-          - name: roadway_area_sq_ft
-            description: Total square footage for roadway seating
+            description: NYC borough where the restaurant is located
+          - name: zip
+            description: Postal ZIP code of restaurant location
+          - name: business_address
+            description: Full business address of the establishment
+          - name: food_service_establishment
+            description: Food Service Establishment Permit number
+          - name: sidewalk_dimensions_length
+            description: Length of the sidewalk seating area (in feet)
+          - name: sidewalk_dimensions_width
+            description: Width of the sidewalk seating area (in feet)
+          - name: sidewalk_dimensions_area
+            description: Total area of the sidewalk seating space (in square feet)
+          - name: roadway_dimensions_length
+            description: Length of the roadway seating area (in feet)
+          - name: roadway_dimensions_width
+            description: Width of the roadway seating area (in feet)
+          - name: roadway_dimensions_area
+            description: Total area of the roadway seating space (in square feet)
           - name: approved_for_sidewalk_seating
-            description: Approval status for sidewalk
+            description: Is the restaurant approved for sidewalk seating?
           - name: approved_for_roadway_seating
-            description: Approval status for roadway
-          - name: qualifying_alcohol_beverage_lic
-            description: Indicator for alcohol license
+            description: Is the restaurant approved for roadway seating?
+          - name: qualify_alcohol
+            description: Does this restaurant qualify to serve alcohol
           - name: sla_serial_number
-            description: State Liquor Authority serial number
+            description: The unique identifying number issued by the SLA
+          - name: sla_licens_type
+            description: The category of the alcohol license issued to the restaurant
+          - name: time_of_submission
+            description: The date and time of the application submission
+          - name: latitude
+            description: Latitude coordinate of the restaurant location
+          - name: longitude
+            description: Longitude coordinate of the restaurant location
+          - name: bin
+            description: The BIN (Building Identification Number) is a unique identifier for each building in the City.
+          - name: bbl
+            description: The BBL (Borough, Block, Lot) is a unique identifier for each tax lot in the City.
+          - name: nta
+            description: The Neighborhood Tabulation Area
+          - name: landmark_district_or_building
+            description: Agreed to the terms and conditions of the Landmark district or building
+          - name: landmarkdistrict_terms
+            description: Is the restaurant in compliance with the DOHMH health code
+          - name: community_board
+            description: NYC community board number for the area
+          - name: census_tract
+            description: Census tract number of the restaurant location
+          - name: council_district
+            description: Dynamically added by Socrata Ingester
+          - name: healthcompliance_terms
+            description: Dynamically added by Socrata Ingester
           - name: sla_license_type
-            description: Type of SLA license
-          - name: landmark_district_or_individual
-            description: Indicator if located in a landmarked area
-          - name: landmark_confimation_method
-            description: Method used to confirm landmark status
-          - name: health_compliance_confirmation
-            description: Confirmation of health code compliance
-          - name: type_of_establishment
-            description: Category of the food establishment
-          - name: submission_date
-            description: Date the application was submitted
+            description: Type of SLA license issued (corrected spelling)
