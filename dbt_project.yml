@@ -27,14 +27,14 @@ models:
        +schema: nyc_transit_restaurants_staging
 
      marts:
-        +materialized: table
-        +schema: nyc_transit_restaurants_marts
+       +materialized: table
+       +schema: nyc_transit_restaurants_marts
       
-        shared:
-          +materialized: table
+       shared:
+         +materialized: table
 
-        open_restaurants_app:
-          +materialized: table
+       open_restaurant_apps:
+         +materialized: table
 
-        dot_311:
-          +materialized: table
+       dot_311:
+         +materialized: table
