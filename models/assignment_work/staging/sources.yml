@@ -1,0 +1,141 @@
+version: 2
+
+sources:
+  - name: raw
+    description: Raw data loaded from NYC Open Data
+    database: farhat-cis9440-project1
+    schema: nyc_hw3_raw_data
+    tables:
+      - name: source_dot_service_requests_history
+        description: |
+          NYC 311 service requests for Dept of Transportation.
+          One row per service request.
+        columns:
+          - name: unique_key
+            description: Unique ID for the service request
+            tests:
+              - unique
+              - not_null
+          - name: created_date
+            description: Date and time the request was created
+          - name: closed_date
+            description: Date and time the request was closed
+          - name: agency
+            description: Agency code (e.g., DOT)
+          - name: agency_name
+            description: Full name of the agency
+          - name: complaint_type
+            description: Type of complaint (e.g., Pothole, Street Light Out)
+          - name: descriptor
+            description: Further description of the complaint
+          - name: descriptor_2
+            description: Additional description of the complaint
+          - name: location_type
+            description: Type of location where the incident occurred
+          - name: incident_zip
+            description: Incident location ZIP code
+          - name: incident_address
+            description: Street address of the incident
+          - name: latitude
+            description: Latitude coordinate
+          - name: longitude
+            description: Longitude coordinate
+          - name: address_type
+            description: Type of address (ADDRESS, INTERSECTION, etc.)
+          - name: bbl
+            description: Borough, Block, and Lot number
+          - name: borough
+            description: NYC borough of the incident
+          - name: city
+            description: City name of the incident
+          - name: community_board
+            description: NYC Community Board district number
+          - name: cross_street_1
+            description: First cross street
+          - name: cross_street_2
+            description: Second cross street
+          - name: status
+            description: Current status of the request
+          - name: street_name
+            description: Name of the street
+          - name: landmark
+            description: Nearby landmark or point of interest
+
+      - name: source_nyc_open_restaurants_app
+        description: |
+          NYC Open Restaurant applications data (Historic). 
+          Contains applications from establishments seeking outdoor seating.
+        columns:
+          - name: objectid
+            description: Unique object ID for the record
+            tests:
+              - unique
+              - not_null
+          - name: globalid
+            description: Global unique identifier for the record
+          - name: seating_interest_sidewalk
+            description: Interest in Sidewalk, Roadway, or Both
+          - name: restaurant_name
+            description: Name of the restaurant
+          - name: legal_business_name
+            description: Legal business name of the establishment
+          - name: doing_business_as_dba
+            description: DBA name (Doing Business As)
+          - name: building_number
+            description: Building number of the restaurant address
+          - name: street
+            description: Street name of the restaurant location
+          - name: borough
+            description: NYC borough of the restaurant
+          - name: zip
+            description: Postal ZIP code
+          - name: business_address
+            description: Full business address
+          - name: food_service_establishment
+            description: Food Service Establishment Permit number
+          - name: sidewalk_dimensions_length
+            description: Length of the sidewalk seating area (ft)
+          - name: sidewalk_dimensions_width
+            description: Width of the sidewalk seating area (ft)
+          - name: sidewalk_dimensions_area
+            description: Total area of sidewalk seating (sq ft)
+          - name: roadway_dimensions_length
+            description: Length of the roadway seating area (ft)
+          - name: roadway_dimensions_width
+            description: Width of the roadway seating area (ft)
+          - name: roadway_dimensions_area
+            description: Total area of roadway seating (sq ft)
+          - name: approved_for_sidewalk_seating
+            description: Flag for sidewalk seating approval
+          - name: approved_for_roadway_seating
+            description: Flag for roadway seating approval
+          - name: qualify_alcohol
+            description: Does the restaurant qualify to serve alcohol
+          - name: sla_serial_number
+            description: Unique identifying number issued by the SLA
+          - name: sla_license_type
+            description: Category of alcohol license issued
+          - name: time_of_submission
+            description: Date and time of application submission
+          - name: latitude
+            description: Latitude coordinate
+          - name: longitude
+            description: Longitude coordinate
+          - name: bin
+            description: Building Identification Number
+          - name: bbl
+            description: Borough, Block, Lot tax identifier
+          - name: nta
+            description: Neighborhood Tabulation Area
+          - name: landmark_district_or_building
+            description: Compliance with Landmark terms
+          - name: landmarkdistrict_terms
+            description: Agreement to Landmark district terms
+          - name: community_board
+            description: NYC community board number
+          - name: census_tract
+            description: Census tract number
+          - name: council_district
+            description: NYC Council District
+          - name: healthcompliance_terms
+            description: Compliance with DOHMH health code
